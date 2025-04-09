@@ -19,6 +19,8 @@ Better OS independent instructions.
 
 Easier installation process.
 
+HTTPS.
+
 
 ## Basic Guide
 
