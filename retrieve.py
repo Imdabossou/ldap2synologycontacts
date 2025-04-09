@@ -7,9 +7,9 @@ import time
 
 # LDAP server details
 ldap_server = 'ldap://DOMAIN NAME'#CHANGEME
-username = 'CN=USERNAME,OU=SERVICEACCOUNTS,DC=AD,DC=EXAMPLE,DC=com' #CHANGEME
+username = 'CN=USERNAME,OU=SERVICEACCOUNTS,DC=AD,DC=EXAMPLE,DC=COM' #CHANGEME
 password = 'PASSWORD' #CHANGEME
-base_dn = 'CN=USERS,DC=AD,DC=EXAMPLE,DC=com'#CHANGEME
+base_dn = 'CN=USERS,DC=AD,DC=EXAMPLE,DC=COM'#CHANGEME
 search_filter = '(objectClass=person)'
 
 # Directory to store vCards
