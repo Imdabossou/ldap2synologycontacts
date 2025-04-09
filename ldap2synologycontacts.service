@@ -1,5 +1,5 @@
 [Unit]
-Description=Run ldap2vcard, wipe, and sync scripts every hour in a loop
+Description=Run retrieve, wipe, and sync scripts every hour in a loop
 After=network.target
 
 [Service]
