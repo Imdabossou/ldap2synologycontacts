@@ -1,0 +1,11 @@
+[Unit]
+Description=Run ldap2vcard, wipe, and sync scripts every hour in a loop
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ldap2synologycontacts/run.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
