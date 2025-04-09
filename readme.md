@@ -1,3 +1,5 @@
+# **LDAP2SYNOLOGYCONTACTS**
+
 1. ldap2vcard.py - Retrieve information from Active Directory and create them as new vCards.
 2. wipe.py - Clear existing contacts from Synology contacts (apart from the contact book itself and Administrator.vcf to avoid the whole address book being deleted.)
 3. sync.py - Upload contact .vcf files up to Synology contacts
