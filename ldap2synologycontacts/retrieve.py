@@ -3,7 +3,6 @@ import os
 import ldap3
 import vobject
 import time
-import base64
 
 ldap_server = 'ldap://DOMAIN NAME'#CHANGEME
 username = 'CN=USERNAME,OU=SERVICEACCOUNTS,DC=AD,DC=EXAMPLE,DC=COM' #CHANGEME
