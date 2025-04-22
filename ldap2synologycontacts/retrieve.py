@@ -5,7 +5,7 @@ import time
 import ldap3
 import vobject
 
-from .config import ldap_server, ldap_username, ldap_password, ldap_base_dn, ldap_search_filter, carddav_vcf_directory
+from config import ldap_server, ldap_username, ldap_password, ldap_base_dn, ldap_search_filter, carddav_vcf_directory
 
 print(f"/{carddav_vcf_directory} set as vcard directory")
 for filename in os.listdir(carddav_vcf_directory):
