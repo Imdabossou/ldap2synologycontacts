@@ -3,7 +3,7 @@
 import os
 import requests
 
-from .config import carddav_url, carddav_username, carddav_password, carddav_vcf_directory
+from config import carddav_url, carddav_username, carddav_password, carddav_vcf_directory
 
 for file_name in os.listdir(carddav_vcf_directory):
     if file_name.endswith('.vcf'):
