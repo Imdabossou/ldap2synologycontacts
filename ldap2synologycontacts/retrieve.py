@@ -1,30 +1,26 @@
 #!/usr/bin/env python3
+
 import os
+import time
 import ldap3
 import vobject
-import time
-import base64
 
-ldap_server = 'ldap://DOMAIN NAME'#CHANGEME
-username = 'CN=USERNAME,OU=SERVICEACCOUNTS,DC=AD,DC=EXAMPLE,DC=COM' #CHANGEME
-password = 'PASSWORD' #CHANGEME
-base_dn = 'CN=USERS,DC=AD,DC=EXAMPLE,DC=COM'#CHANGEME
-search_filter = '(objectClass=person)'
+from .config import ldap_server, ldap_username, ldap_password, ldap_base_dn, ldap_search_filter, carddav_vcf_directory
 
-vcard_dir = 'vcards'
-print(f"/{vcard_dir} set as vcard directory")
-for filename in os.listdir(vcard_dir):
-    file_path = os.path.join(vcard_dir, filename)
+print(f"/{carddav_vcf_directory} set as vcard directory")
+for filename in os.listdir(carddav_vcf_directory):
+    file_path = os.path.join(carddav_vcf_directory, filename)
     if os.path.isfile(file_path):
         os.remove(file_path)
 print("Directory wiped")
+
 time.sleep(1)
 
 server = ldap3.Server(ldap_server)
-connection = ldap3.Connection(server, user=username, password=password, auto_bind=True)
+connection = ldap3.Connection(server, user=ldap_username, password=ldap_password, auto_bind=True)
 print("Connected to LDAP")
-connection.search(base_dn, search_filter, attributes=['cn', 'mail', 'telephoneNumber', 'title', 'mobile'])
-print("Reading Directory")
+connection.search(ldap_base_dn, ldap_search_filter, attributes=['cn', 'mail', 'telephoneNumber', 'title', 'mobile'])
+print("Reading Directory") 
 
 for entry in connection.entries:
     vcard = vobject.vCard()
@@ -37,7 +33,7 @@ for entry in connection.entries:
     tel_mobile.value = entry.mobile.value if entry.mobile else ''
     tel_mobile.type_param = 'CELL'
     vcard.add('title').value = entry.title.value if entry.title else ''
-    vcard_filename = os.path.join(vcard_dir, f"{entry.cn.value}.vcf")
+    vcard_filename = os.path.join(carddav_vcf_directory, f"{entry.cn.value}.vcf")
     with open(vcard_filename, "w") as vcard_file:
         vcard_file.write(vcard.serialize())
 print("New vcards created")

@@ -11,6 +11,9 @@ done
 # Install required packages (system wide)
 sudo pacman -S --needed python-ldap3 python-vobject python-requests
 
+# Create vcards directory
+mkdir -p ldap2synologycontacts/vcards
+
 # Move folder to /usr/local/bin
 cp -r ldap2synologycontacts/ /usr/local/bin/
 

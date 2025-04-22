@@ -4,13 +4,11 @@ import requests
 import xml.etree.ElementTree as ET
 import urllib.parse
 
-CARD_DAV_URL = 'https://IP ADDRESS:5001/carddav/DOMAIN@@USERNAME/123123123123123123' #CHANGEME
-USERNAME = 'USERNAME' #CHANGEME
-PASSWORD = 'PASSWORD' #CHANGEME
+from .config import carddav_url, carddav_username, carddav_password
 
-response = requests.request(
-    'PROPFIND', CARD_DAV_URL,
-    auth=(USERNAME, PASSWORD),
+response = requests.request( 
+    'PROPFIND', carddav_url,
+    auth=(carddav_username, carddav_password),
     headers={'Depth': 'infinity'},
     verify=False
 )
@@ -41,10 +39,10 @@ if response.status_code == 207:
 
     for contact_url in contact_urls:
         # Use urljoin without additional quote to avoid double encoding.
-        full_contact_url = urllib.parse.urljoin(CARD_DAV_URL, contact_url)
+        full_contact_url = urllib.parse.urljoin(carddav_url, contact_url)
         print(f"Attempting to delete: {full_contact_url}")
 
-        del_response = requests.delete(full_contact_url, auth=(USERNAME, PASSWORD), verify=False)
+        del_response = requests.delete(full_contact_url, auth=(carddav_username, carddav_password), verify=False)
         print(f"Delete response for {full_contact_url}: {del_response.status_code} - {del_response.text}")
 
         if del_response.status_code == 204:
