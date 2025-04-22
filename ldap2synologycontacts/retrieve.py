@@ -42,9 +42,8 @@ for entry in connection.entries:
     if vcard_image_url:
         image_type = get_image_type(vcard_image_url)
         if image_type:
-            photo = vcard.add('photo')
-            photo.value = vcard_image_url
-            photo.type_param = image_type
+            vcard.add('photo').value = f"uri:{vcard_image_url}"
+            vcard.photo.type_param = image_type
     vcard_filename = os.path.join(carddav_vcf_directory, f"{entry.cn.value}.vcf")
     with open(vcard_filename, "w") as vcard_file:
         vcard_file.write(vcard.serialize())
