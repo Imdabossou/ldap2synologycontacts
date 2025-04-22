@@ -11,13 +11,11 @@ The project is currently split into three separate processes for easier testing.
 3. sync.py - Upload contact .vcf files up to Synology contacts
 
 ## TO DO
-Add more fields from AD to the VCards such as mobile number, photo, etc.
+Add photo field from AD.
 
-Centralized config file for credentials.
+OS independent installer & instructions. 
 
-Better OS independent instructions. 
-
-Easier installation process.
+Upgrade process that keeps previous config.py if upgrading to a newer version.
 
 HTTPS.
 
