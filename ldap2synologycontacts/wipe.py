@@ -4,7 +4,7 @@ import requests
 import xml.etree.ElementTree as ET
 import urllib.parse
 
-from .config import carddav_url, carddav_username, carddav_password
+from config import carddav_url, carddav_username, carddav_password
 
 response = requests.request( 
     'PROPFIND', carddav_url,
