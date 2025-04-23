@@ -10,3 +10,6 @@ carddav_url = 'https://IP ADDRESS:5001/carddav/DOMAIN@@USERNAME/1231231231231231
 carddav_username = 'USERNAME'  # CHANGEME
 carddav_password = 'PASSWORD'  # CHANGEME
 carddav_vcf_directory = 'vcards'
+
+# VCard Image settings
+vcard_image_url = None

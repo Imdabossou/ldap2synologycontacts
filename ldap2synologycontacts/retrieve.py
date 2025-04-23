@@ -5,7 +5,7 @@ import time
 import ldap3
 import vobject
 
-from config import ldap_server, ldap_username, ldap_password, ldap_base_dn, ldap_search_filter, carddav_vcf_directory
+from config import ldap_server, ldap_username, ldap_password, ldap_base_dn, ldap_search_filter, carddav_vcf_directory, vcard_image_url
 
 print(f"/{carddav_vcf_directory} set as vcard directory")
 for filename in os.listdir(carddav_vcf_directory):
@@ -22,6 +22,12 @@ print("Connected to LDAP")
 connection.search(ldap_base_dn, ldap_search_filter, attributes=['cn', 'mail', 'telephoneNumber', 'title', 'mobile'])
 print("Reading Directory") 
 
+def get_image_type(url):
+    if url.lower().endswith(".png"):
+        return "png"
+    elif url.lower().endswith(".jpg") or url.lower().endswith(".jpeg"):
+        return "jpeg"
+
 for entry in connection.entries:
     vcard = vobject.vCard()
     vcard.add('fn').value = entry.cn.value
@@ -33,6 +39,13 @@ for entry in connection.entries:
     tel_mobile.value = entry.mobile.value if entry.mobile else ''
     tel_mobile.type_param = 'CELL'
     vcard.add('title').value = entry.title.value if entry.title else ''
+    if vcard_image_url:
+        image_type = get_image_type(vcard_image_url)
+        if image_type:
+            photo = vcard.add('photo')
+            photo.type_param = image_type
+            photo.value = vcard_image_url
+            photo.params['VALUE'] = ['uri']
     vcard_filename = os.path.join(carddav_vcf_directory, f"{entry.cn.value}.vcf")
     with open(vcard_filename, "w") as vcard_file:
         vcard_file.write(vcard.serialize())
