@@ -11,8 +11,6 @@ The project is currently split into three separate processes for easier testing.
 3. sync.py - Upload contact .vcf files up to Synology contacts
 
 ## TO DO
-Add photo field from AD.
-
 OS independent installer & instructions. 
 
 Upgrade process that keeps previous config.py if upgrading to a newer version.
