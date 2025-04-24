@@ -17,6 +17,7 @@ Upgrade process that keeps previous config.py if upgrading to a newer version.
 
 HTTPS.
 
+Conditional refresh. Only wipe and sync new contacts if a change is found.
 
 ## Basic Guide
 
