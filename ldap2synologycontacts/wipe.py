@@ -25,7 +25,7 @@ if response.status_code == 207:
     contact_urls = []
     for href in root.findall('.//d:href', namespaces):
         href_text = href.text
-        # Only delete .vcf files, skipping the Administrator.vcf and collection root. This stops the whole thing from being deleted which breaks the next uploads.
+    # Only delete .vcf files, skipping the Administrator.vcf and collection root. This stops the whole thing from being deleted which breaks the next uploads.
         if (
             href_text.endswith('.vcf') and
             'Administrator.vcf' not in href_text
