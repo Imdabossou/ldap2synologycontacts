@@ -15,8 +15,6 @@ OS independent installer & instructions.
 
 Upgrade process that keeps previous config.py if upgrading to a newer version.
 
-HTTPS.
-
 
 ## Basic Guide
 
@@ -36,8 +34,6 @@ Move .service out into /etc/systemd/system/
 
 ## DISCLAIMERS
 This is specficially designed to use Synology Contacts as it is what I have available. I cannot guarantee this would work with any other CardDAV server.
-
-This uses HTTP. Only use this on an internal network.
 
 This currently runs on and only has instructions for Arch Linux. As it is Python it should run on just about anything, but you will need to adjust the files accordingly.
 
