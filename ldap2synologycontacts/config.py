@@ -6,7 +6,7 @@ ldap_base_dn = 'CN=USERS,DC=AD,DC=EXAMPLE,DC=COM'  # CHANGEME
 ldap_search_filter = '(&(&(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))(!(cn=*$)))' #Account type user, not disabled, exclude $ for interdomain trust users
 
 # CardDAV settings
-carddav_url = 'https://HOSTNAME:5001/carddav/DOMAIN@@USERNAME/123123123123123123'  # CHANGEME
+carddav_url = 'https://HOSTNAME:5001/carddav/DOMAIN@@USERNAME/123123123123123123'  # CHANGEME - If using the default self signed synology certificate this will have the hostname of the device in it, not the ip address.
 carddav_username = 'USERNAME'  # CHANGEME
 carddav_password = 'PASSWORD'  # CHANGEME
 carddav_vcf_directory = 'vcards'
