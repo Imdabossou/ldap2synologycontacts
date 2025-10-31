@@ -26,3 +26,5 @@ for file_name in os.listdir(carddav_vcf_directory):
             print(f"Contact already exists {filename}")
     else:
         print(f"Failed to upload {filename}: {response.status_code} {response.text}")
+
+test
